@@ -1,0 +1,76 @@
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <link rel="stylesheet" href="../css/vueavancee.css">
+</head>
+<body>
+
+
+<div class="bigfont text-center">
+    <!-- drop down timeline list-->
+    <label for="repeatSelect"> Choisir votre époque: </label>
+    <select id="dropdownchoicenote"  name="dropdownnote"  class="bgblacktxWhite" name="repeatSelect" id="repeatSelect" ng-model="formData.timelinename">
+        <option ng-repeat="timeline in timelines" value="{{timeline.title}}">{{timeline.title}}</option>
+    </select>
+</div>
+
+
+<div id="descriptionepoque" >
+    <span class="bgblacktxWhite" ng-bind-html="returnHtml(returnParentObject(formData.timelinename).description)"></span>
+    <span id="descriptionwithtitle"></span>
+</div>
+
+<div  class="">
+    <!-- TIMEnote LIST -->
+    <div id="timenote-list " class="sectionfichevueavancee draggable">
+        <div class="ficheDate">Date : <span ng-bind="returnDate(fiche_evenements[indexEvenement].date_debut)"></span> - <span ng-bind="returnDate(fiche_evenements[indexEvenement].date_fin)"></span></div>
+        <button class="closeButtonFicheAvancee" ng-click="closeFiche()">X</button>
+        <h3>Évenement {{ fiche_evenements[indexEvenement].title }} </h3>
+        <div id="style-4scrollbar"  class="sectionfichevueavanceeInner">
+
+            <div class="fichedescription"><h3 class="textleft topmarge">Description</h3><span ng-bind-html="returnHtml(fiche_evenements[indexEvenement].description)"></span> </divclass>
+                <!-- LOOP OVER THE TIMEnoteS IN $scope.timenotes
+                <div  ng-repeat="timenote in timenotes">
+                    <div ng-if="timenote.timeline_name == formData.timelinename">
+                        <div >
+                            <!-- <input class="bgblacktxWhite" type="button" ng-click="deleteTimenote(timenote._id)" value="suppression">
+                            {{ timenote.title }}
+                            {{timenote.date_debut}}
+                            <!-- important fonction pour afficher avec html  <span ng-bind-html="returnHtml(timenote.description)"></span>
+                            <input class="bgblacktxWhite" type="button" ng-click="modifierTimenote(timenote._id)" value="modifier">
+
+                        </div>
+                    </div>
+                </div>-->
+
+            </div>
+
+            <div class="ligneMauve"></div>
+        </div>
+
+
+    </div>
+
+<div id="visualization" ></div>
+
+<!--<nav class="navbar navbar-inverse yellowBorderShadow" role="navigation">
+    <div class="navbar-header">
+        <div id="sectionTheTimeline">
+            <ul class="nav navbar-nav ">
+                <li><a>Départ</a></li>
+
+                <li><a>Fin</a></li>
+            </ul>
+        </div>
+    </div>-->
+
+
+
+
+
+
+
+</nav>
+</body>

@@ -1,0 +1,44 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+
+    <title> Timeline App</title>
+
+    <!-- SCROLLS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
+    <link rel="stylesheet" href="../../css/main.css">
+    <script src="../app.js"></script>
+</head>
+<body>
+<div ng-controller="userlogin_Ctrl" class="container2 middlewidth">
+
+    <div id="pasconnecte" >
+        <h2>Connexion</h2>
+        <form name="form"  >
+            <div class="form-group" >
+                <label for="username">Nom d'utilisateur</label>
+                <input type="text" name="username" id="username" class="form-control"  ng-model="username" />
+                <!--<span ng-show="form.username.$dirty && form.username.$error.required" class="help-block">Username is required</span>-->
+            </div>
+            <div class="form-group" >
+                <label for="password">Mot de passe</label>
+                <input type="password" name="password" id="password" class="form-control" ng-model="password" />
+                <!--<span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Password is required</span>-->
+            </div>
+            <div class="form-actions">
+                <button type="submit"  class="buttonSoft" ng-click="validateLogin()" >Se connecter</button>
+
+            </div>
+        </form>
+    </div>
+
+    <div id="vousetesconnecte">
+        <h1>Vous êtes connecté!</h1>
+    </div>
+
+</div>
+</body>
+<!--
+<div class="col-md-6 col-md-offset-3">
+
+</div>-->

@@ -1,0 +1,19 @@
+{
+  "name": "node-time",
+  "version": "0.0.0",
+  "description": "test app time",
+  "main": "app.js",
+  "author": "Vinca",
+  "dependencies": {
+    "body-parser": "^1.4.3",
+    "express": "^4.13.4",
+    "method-override": "^2.1.3",
+    "mongoose": "^4.4.12",
+    "morgan": "^1.1.1",
+    "tinymce": "latest"
+
+  },
+  "devDependencies": {
+    "tinymce": "0.0.16"
+  }
+}

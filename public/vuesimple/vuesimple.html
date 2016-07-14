@@ -1,0 +1,110 @@
+
+<head>
+    <meta charset="UTF-8">
+    <title>Vue simple</title>
+</head>
+<body>
+<div class="container2">
+
+    <!-- HEADER AND TIMEnote COUNT -->
+    <div class=" text-center">
+        <h1> Vue simple des époques <span class="smallfont"> Nb:{{ timenotes.length }} </span></h1>
+    </div>
+
+
+
+
+    <div class="bigfont text-center">
+        <!-- drop down timeline list-->
+        <label for="repeatSelect"> Choisir votre époque: </label>
+        <select id="dropdownchoicenote"  name="dropdownnote"  class="bgblacktxWhite" name="repeatSelect" id="repeatSelect" ng-model="formData.timelinename">
+            <option ng-repeat="timeline in timelines" value="{{timeline.title}}">{{timeline.title}}</option>
+        </select>
+    </div>
+
+
+    <div id="descriptionepoque" >
+             <span class="bgblacktxWhite" ng-bind-html="returnHtml(returnParentObject(formData.timelinename).description)"></span>
+        <span id="descriptionwithtitle"></span>
+    </div>
+
+
+ <div  class="">
+     <!-- TIMEnote LIST -->
+        <div id="timenote-list" class="alignleftdiv">
+
+            <h3>Évenements disponibles</h3>
+            <div id="style-4scrollbar"  class="vuesimple_evenmentliste">
+
+                <!-- LOOP OVER THE TIMEnoteS IN $scope.timenotes -->
+                <div  ng-repeat="timenote in timenotes">
+                    <div ng-if="timenote.timeline_name == formData.timelinename && timenote.title == fiche_evenements[indexEvenement].title">
+
+                            <div class="selectedEvenementdisponible"  >
+                                <!-- <input class="bgblacktxWhite" type="button" ng-click="deleteTimenote(timenote._id)" value="suppression">-->
+                                {{ timenote.title }}<br>
+                                <!--{{timenote.date_debut}}-->
+                                {{returnDate(timenote.date_debut)}}
+                                <span class="bgblacktxWhite" ng-bind-html="returnDate(timenote.date_debut)"></span>
+
+                                <!-- important fonction pour afficher avec html  <span ng-bind-html="returnHtml(timenote.description)"></span>
+                                <input class="bgblacktxWhite" type="button" ng-click="modifierTimenote(timenote._id)" value="modifier">-->
+
+                            </div>
+                        </div>
+
+
+                    <div ng-if="timenote.timeline_name == formData.timelinename &&  timenote.title != fiche_evenements[indexEvenement].title">
+                        <div class="selectionevenementdisponible"  ng-click="selectEventInList(timenote)" >
+                            <!-- <input class="bgblacktxWhite" type="button" ng-click="deleteTimenote(timenote._id)" value="suppression">-->
+                             {{ timenote.title }}<br>
+                            <!--{{timenote.date_debut}}-->
+                            {{returnDate(timenote.date_debut)}}
+                           <span class="bgblacktxWhite" ng-bind-html="returnDate(timenote.date_debut)"></span>
+
+                           <!-- important fonction pour afficher avec html  <span ng-bind-html="returnHtml(timenote.description)"></span>
+                           <input class="bgblacktxWhite" type="button" ng-click="modifierTimenote(timenote._id)" value="modifier">-->
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="ligneMauve"></div>
+            <button class="buttonlist" ng-click="goToPreviousEvenement()">précedent</button>
+            <button class="buttonlist" ng-click="goToNextEvenement()">suivant</button><br>
+        </div>
+
+
+    </div>
+
+
+    <div  class="">
+        <!-- TIMEnote LIST -->
+        <div id="timenote-list " class="sectionfichevuesimple">
+            <h3>Évenement {{ fiche_evenements[indexEvenement].title }} </h3>
+            <div id="style-4scrollbar"  class="sectionfichevuesimpleInner">
+
+                <div class="fichedescription"><h3 class="textleft topmarge">Description</h3><span ng-bind-html="returnHtml(fiche_evenements[indexEvenement].description)"></span> </divclass>
+                <!-- LOOP OVER THE TIMEnoteS IN $scope.timenotes
+                <div  ng-repeat="timenote in timenotes">
+                    <div ng-if="timenote.timeline_name == formData.timelinename">
+                        <div >
+                            <!-- <input class="bgblacktxWhite" type="button" ng-click="deleteTimenote(timenote._id)" value="suppression">
+                            {{ timenote.title }}
+                            {{timenote.date_debut}}
+                            <!-- important fonction pour afficher avec html  <span ng-bind-html="returnHtml(timenote.description)"></span>
+                            <input class="bgblacktxWhite" type="button" ng-click="modifierTimenote(timenote._id)" value="modifier">
+
+                        </div>
+                    </div>
+                </div>-->
+
+            </div>
+
+            <div class="ligneMauve"></div>
+        </div>
+
+
+    </div>
+</body>

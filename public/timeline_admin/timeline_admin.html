@@ -1,0 +1,185 @@
+<!-- timelineAdmin.html
+<!doctype html>-->
+
+<!-- ASSIGN OUR ANGULAR MODULE
+<html > <!-- dans la balise enleve test ng-app="vincaTimeline" -->
+<head>
+    <!-- META -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+
+    <title> Timeline App</title>
+
+    <!-- SCROLLS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
+    <link rel="stylesheet" href="../css/main.css">
+
+
+
+    <!-- SPELLS
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+    <script src=//cdn.tinymce.com/4/tinymce.min.js></script>
+    <script src="http://code.angularjs.org/1.2.13/angular.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+    <script src="../jsFiles/nav_and_widgetjq.js"></script>-->
+
+
+
+</head>
+<!-- SET THE CONTROLLER AND GET ALL TIMELINES -->
+<div ng-controller="timeline_adminCtrl"  class="container2" >
+
+
+
+    <div >
+
+        <div class="undertopmenu">
+            <button id="newtimeline" class="button " onclick="changepage(this);" >+ Ajouter une nouvelle époque</button>
+            <button id="listlines" class="button " onclick="changepage(this);">Consulter la liste des époques</button>
+        </div>
+
+
+
+        <!-- HEADER AND TIMELINE COUNT -->
+        <div class=" text-center">
+            <h1> Époques   <span class="smallfont">Nb:{{ timelines.length }}</span> </h1>
+        </div>
+
+
+
+
+
+
+
+
+        <div id="sectionlistlines"  class=" divswap">
+        <!-- TIMELINE LIST -->
+            <div id="timeline-list" class="row">
+                <div class="col-sm-8 col-sm-offset-2">
+
+                    <!-- LOOP OVER THE TIMELINES IN $scope.timelines -->
+                    <div class="checkbox" ng-repeat="timeline in timelines">
+                        <label>
+                            <input type="button" class="bgblacktxWhite"  ng-click="deleteTimeline(timeline._id)" value="suppression">
+                        </label>
+                            {{ timeline.title }}
+                            {{timeline.theme}}
+                            {{timeline.description}}
+                            {{timeline.date_debut}}
+                            {{timeline.date_fin}}
+                        <input type="button" class="bgblacktxWhite" ng-click="selectionnerTimeline(timeline)" value="modifier">
+
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+
+        <div  id="sectionnewtimeline" class=" divswap">
+
+
+            <!-- FORM TO CREATE TIMELINES -->
+            <div id="timeline-form" class="row">
+                <div class="col-sm-8 col-sm-offset-2 text-center">
+                    <form >
+                        <div class="form-group">
+
+                            <!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+                            <input type="text" class="form-control input-lg text-center bgblacktxWhite" placeholder="Titre" ng-model="formData.title">
+                            <input type="text" class="form-control input-lg text-center bgblacktxWhite topmarge" placeholder="thème" ng-model="formData.theme">
+                        </div>
+                            <h3 class="textleft"> Description:</h3>
+                           <textarea id="descriptiondata" class="mytextarea" placeholder="Description" ></textarea>
+                            <!-- <textarea class="mytextarea"  ng-model="formData.description"></textarea>
+                            <textarea class="mytextarea"></textarea>-->
+
+                        <br>
+                        <div class="inlineb">
+                            <label for="debutdate" class="smallx-axemargin10" >Date de debut </label> <input class="bgblacktxWhite smallcase" id="debutdate" type="date" class="right" placeholder="Date de commencement" ng-model="formData.date_debut">
+                        </div>
+
+                        <div class="inlineb">
+                            <label for="findate" class="smallx-axemargin10" >Date de fin </label><input class="bgblacktxWhite smallcase"  id="findate" type="date" class="right" placeholder="Date de fin" ng-model="formData.date_fin">
+                        </div>
+
+
+                        <!-- createToDo() WILL CREATE NEW TIMELINES -->
+
+                    </form>
+                </div>
+
+                <button type="submit" class="submit bgblacktxWhite middlewidth" ng-click="createTimeline()">Ajouter</button>
+
+
+
+
+            </div>
+
+            </div>
+
+        <div  id="sectionmodifiertimeline" class=" divswap">
+
+
+                <div class="insidemargin">
+                    <h3 class=" text-center" >Modification d'une époque</h3>
+                    <!-- FORM TO UPDATE TIMELINES -->
+                    <div id="timeline-form" class="row">
+
+                        <div class="col-sm-8 col-sm-offset-2 text-center">
+                                    <form >
+                                                <div class="form-group">
+
+                                                            <!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+                                                            <input type="text" class="form-control input-lg text-center bgblacktxWhite" placeholder="Titre" ng-model="modifierformData.title">
+                                                            <input type="text" class="form-control input-lg text-center bgblacktxWhite topmarge" placeholder="thème" ng-model="modifierformData.theme">
+                                                </div>
+                                                <h3 class="textleft"> Description:</h3>
+                                                <div id="modifdescriptiondata" name="modifdescriptiondata"   >
+                                                    <span id="tinymodifform"></span>
+                                                </div>
+
+
+                                                <!-- <textarea class="mytextarea"  ng-model="formData.description"></textarea>
+                                                <textarea class="mytextarea"></textarea>-->
+
+                                                <br>
+                                                <div class="inlineb">
+                                                         <label for="debutdate" class="smallx-axemargin10" >Date de debut </label> <input id="modifdatedebut" class="bgblacktxWhite smallcase" id="debutdate" type="date" class="right" placeholder="Date de commencement" ng-model="modifierformData.date_debut">
+                                                </div>
+
+                                                <div class="inlineb">
+                                                         <label for="findate" class="smallx-axemargin10" >Date de fin </label><input id ="modifdatefin" class="bgblacktxWhite smallcase"  id="findate" type="date" class="right" placeholder="Date de fin" ng-model="modifierformData.date_fin">
+                                                </div>
+
+
+                                        <!-- createToDo() WILL CREATE NEW TIMELINES -->
+
+                                    </form>
+                        </div>
+
+                        <button id="modifiersubmitbutton" type="submit" class="submit bgblacktxWhite middlewidth" ng-click="modifierTimeline()">Modifier</button>
+
+                </div>
+
+
+            </div>
+
+        </div>
+            <!--  <textarea class="mytextarea" placeholder="Description" ng-model="formData.description"></textarea>-->
+
+        </div>
+    <br>
+    </div>
+
+
+
+
+
+    <!--</html>-->

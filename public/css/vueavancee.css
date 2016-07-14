@@ -1,0 +1,145 @@
+
+.blueBorderShadow{
+   /* heigth:150px;*/
+    background-color: #121851;
+    position:absolute;
+    left:0px;
+    bottom:0px;
+    height:50px;
+    width:100%;
+    -moz-box-shadow:    inset 0 0 10px #9c90ff;
+    -webkit-box-shadow: inset 0 0 10px #9c90ff;
+    box-shadow:         inset 0 0 10px #9c90ff;
+    border-radius: 10px;
+}
+/*
+.vis-item  {
+    white-space: nowrap;
+    box-sizing: border-box;
+    padding: 5px;
+}*/
+
+
+/* on met la date et heure du jour non visible */
+
+.vis-current-time{
+    background-color: black;
+    width: 3px;
+    opacity:0;
+}
+.vis-top{
+
+}
+.vis-item {
+
+    border-color: #4b7bff;
+    background-color: #bbb5ff;
+    background-color: #000;
+
+    font-size: 15pt;
+    /*color: purple;*/
+    color:#fff;
+    box-shadow: 5px 5px 20px rgba(128,128,128, 0.5);
+
+
+}
+
+
+.vis-item.epoqueChoisie{
+
+    background-color: rgba(0,0,0,0.5);
+
+
+    height:100px;
+    color:#fff;
+    border-radius: 10px;
+}
+
+.vis-item.vis-selected {
+    border-color: yellow;
+    color: yellow;
+    box-shadow: 0 0 10px white;
+}
+.vis-item.epoqueChoisie:focus{
+
+    background-color: rgba(12, 10, 96, 0.88);
+
+
+    height:100px;
+    color:#fff;
+    border-radius: 20px;
+}
+/*
+.vis-item.epoqueChoisie{
+    background-color: #5C258D;
+    opacity:0.5;
+}
+
+.vis-item .evenement{
+
+    border-color: #4b7bff;
+    background-color: #bbb5ff;
+    font-size: 15pt;
+    color: purple;
+    box-shadow: 5px 5px 20px rgba(128,128,128, 0.5);
+
+
+}*/
+
+
+.vis-item.vis-box {
+    border-width: 1px;
+    text-align: left !important;
+    background-color: transparent !important;
+   /* border-left-width: 10px;*/
+    border-color: #7b2eff;
+    border-radius: 10px;
+}
+
+.vis-item,
+.vis-item.vis-line {
+    border-width: 3px;
+    border-color: #fff;
+
+}
+.vis-time-axis{
+    /*color:#fff !important;*/
+    /*opacity:0;*/
+}
+
+.vis-time-axis .vis-text{
+    color:#fff;
+    padding:5px;
+
+
+}
+
+.vis-timeline {
+    /*background-color: #121851;*/
+
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#27178c+48,240b70+61&0+0,0.55+6,0.87+50,0.55+92,0.01+100 */
+    background: -moz-linear-gradient(left,  rgba(39,23,140,0) 0%, rgba(39,23,140,0.55) 6%, rgba(39,23,140,0.86) 48%, rgba(39,21,136,0.87) 50%, rgba(36,11,112,0.79) 61%, rgba(36,11,112,0.55) 92%, rgba(36,11,112,0.01) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left,  rgba(39,23,140,0) 0%,rgba(39,23,140,0.55) 6%,rgba(39,23,140,0.86) 48%,rgba(39,21,136,0.87) 50%,rgba(36,11,112,0.79) 61%,rgba(36,11,112,0.55) 92%,rgba(36,11,112,0.01) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right,  rgba(39,23,140,0) 0%,rgba(39,23,140,0.55) 6%,rgba(39,23,140,0.86) 48%,rgba(39,21,136,0.87) 50%,rgba(36,11,112,0.79) 61%,rgba(36,11,112,0.55) 92%,rgba(36,11,112,0.01) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0027178c', endColorstr='#03240b70',GradientType=1 ); /* IE6-9 */
+
+
+    border: 0px ;
+    font-family:  purisa, 'comic sans', cursive;
+    font-size: 12pt;
+    border-radius: 20px;
+    /*background: #ffecea;*/
+}
+
+
+
+.vis-time-axis .vis-grid.vis-minor {
+    border-width: 2px;
+    border-color: pink;
+    opacity:0;
+}
+
+.vis-time-axis .vis-grid.vis-major {
+    border-width: 0px;
+   /* border-color: #F991A3;*/
+}

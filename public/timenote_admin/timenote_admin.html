@@ -1,0 +1,136 @@
+<!-- timenoteAdmin.html
+<!doctype html>-->
+
+<!-- ASSIGN OUR ANGULAR MODULE
+<html > <!-- dans la balise enleve test ng-app="vincaTimenote" -->
+<head>
+    <!-- META -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+
+    <title> Timenote App</title>
+
+    <!-- SCROLLS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
+    <link rel="stylesheet" href="../css/main.css">
+
+    <!-- SPELLS
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><!-- load jquery
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script><!-- load angular -->
+
+    <!--
+    <script src="../../node_modules/angular-ui-tinymce/src/tinymce.js"></script>
+    <script>
+        tinymce.init({
+            selector: 'textarea',  // change this value according to your HTML
+            content_security_policy: 'default-src 'self''
+        });
+    </script>-->
+
+</head>
+
+<body>
+<!-- SET THE CONTROLLER AND GET ALL TIMEnoteS -->
+<div ng-controller="timenote_adminCtrl" >
+
+
+
+
+    <div class="container2">
+
+        <!-- HEADER AND TIMEnote COUNT -->
+        <div class=" text-center">
+            <h1> Évènements <span class="smallfont"> Nb:{{ timenotes.length }} </span></h1>
+        </div>
+
+
+
+
+        <div class="bigfont text-center">
+        <!-- drop down timeline list-->
+            <!--<label for="repeatSelect"> Choisir votre époque </label>-->
+            <select id="dropdownchoicenote"  name="dropdownnote"  ng-options='timeline as timeline.title for timeline  in timelines '
+                    class="bgblacktxWhite" name="repeatSelect" id="repeatSelect" ng-model="selectedTimeline"  ng-change="dropDownList_update()"
+                    ng-init="timelines[SelectedEpoqueIndex].title">
+            <option value="" select disabled>Choisir votre époque</option>
+        </select>
+        </div>
+
+
+
+
+        <div id="style-4scrollbar" class="boiteafficheevenement">
+        <!-- TIMEnote LIST -->
+            <div id="timenote-list " class="row ">
+                <div class="col-sm-8 col-sm-offset-2">
+
+                    <!-- LOOP OVER THE TIMEnoteS IN $scope.timenotes -->
+                    <div  ng-repeat="timenote in timenotes">
+                        <div ng-if="timenote.timeline_name == selectedTimeline.title">
+                            <div class="aligntopdiv">
+                                <input class="bgblacktxWhite" type="button" ng-click="deleteTimenote(timenote._id)" value="suppression">
+                                {{ timenote.title }}
+                                <!-- {{timenote.description}}-->
+                                <!-- important fonction pour afficher avec html  <span ng-bind-html="returnHtml(timenote.description)"></span> -->
+                                <input class="bgblacktxWhite" type="button" ng-click="modifierTimenote(timenote._id)" value="modifier">
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+        <button id="newtimenoteshow" class="button" ng-click="afficheInsertForm()"  >+ Ajouter un évenement</button>
+
+        <div id="aucune_epoque" class="blueborder"> Veuillez d'abord séléctionner une époque</div>
+        <div id="ajoutnoteform">
+                        <!-- FORM TO CREATE TIMEnoteS -->
+                        <div id="timenote-form" class="row">
+                            <div class="col-sm-8 col-sm-offset-2 text-center">
+                                <form>
+
+
+
+                                    <div class="form-group">
+
+                                        <!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+                                        <input type="text" class="form-control input-lg text-center bgblacktxWhite topmarge" placeholder="Titre" ng-model="formData.title">
+                                        <input type="text" class="form-control input-lg text-center bgblacktxWhite topmarge" placeholder="Thème" ng-model="formData.theme">
+                                        <!-- <textarea rows="4" class="fullwidth input-lg topmarge" placeholder="description " ng-model="formData.description"></textarea>-->
+                                        <h3 class="textleft"> Description:</h3>
+                                        <textarea id="descriptiondata" class="mytextarea" placeholder="Description" ></textarea>
+                                        <!-- <textarea class="mytextarea"  ng-model="formData.description"></textarea>
+                                        <textarea class="mytextarea"></textarea>-->
+
+                                        <br>
+
+                                        <div  class="blueborder">
+                                            La date de début de l'évenement doit être située entre:<span ng-bind="returnDate(selectedTimeline.date_debut)"></span> et  <span ng-bind="returnDate(selectedTimeline.date_fin)"></span>
+                                        </div>
+
+                                        <div class="inlineb">
+                                            <label for="debutdate" class="smallx-axemargin10" >Date de debut </label> <input class="bgblacktxWhite smallcase" id="debutdate" type="date" class="right" placeholder="Date de commencement" ng-model="formData.date_debut">
+                                        </div>
+
+                                        <div class="inlineb">
+                                            <label for="findate" class="smallx-axemargin10" >Date de fin </label><input class="bgblacktxWhite smallcase"  id="findate" type="date" class="right" placeholder="Date de fin" ng-model="formData.date_fin">
+                                        </div>
+
+
+                            </form>
+                        </div>
+                    </div>
+                              <!-- createTimenote() WILL CREATE NEW TIMEnoteS -->
+                        <button type="submit" class="submit bgblacktxWhite middlewidth" ng-click="createTimenote()">Ajouter</button>
+
+        </div>
+</div>
+
+</body>
+
+
+<!--</html>-->
