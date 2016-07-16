@@ -10,9 +10,10 @@
 
 <div class="bigfont text-center">
     <!-- drop down timeline list-->
-    <label for="repeatSelect"> Choisir votre époque: </label>
+
     <select id="dropdownchoicenote"  name="dropdownnote"  class="bgblacktxWhite" name="repeatSelect" id="repeatSelect" ng-model="formData.timelinename">
         <option ng-repeat="timeline in timelines" value="{{timeline.title}}">{{timeline.title}}</option>
+        <option value="" select disabled>Choisir votre époque</option>
     </select>
 </div>
 

@@ -1,19 +1,89 @@
 
 //var routerApp = angular.module('routerApp', []);
-var routerApp = angular.module('routerApp', ['ui.router']);
+var routerApp = angular.module('routerApp', ['ui.router',
+    function (){
 
-/*  TOUT PRES D'Y ARRIVÉÉÉÉ ****** connection ng IF
-routerApp.controller('routerApp'['clientId', function($scope) {
+        //history.pushState(null,null,'#hashexample');
 
-    $scope.etablieConnexion=function(){
-        if (clientId =="a12345654321x")
-            return true;
-        else
-            return false;
-    }
+        $(document).on('click', 'a[href^=#]', function(event) {
+            event.preventDefault();
+            history.pushState({}, '', this.href);
+        });
+        $(document).ready(function() {
 
-    }
-]);*/
+
+
+            $(".nav").click(function() {
+                // alert($(this).attr("class"));
+                var choice=this;
+                left = $(choice).offset().left;
+
+
+                $(".nav").removeClass("active",500);
+                $(choice).addClass("active",500);
+                //var choice = this;
+
+
+                scrollbarwidth=(window.innerWidth-$(window).width());
+                //alert(scrollbarwidth);
+                //alert($(choice).html());
+                if(scrollbarwidth>0 && $(choice).html()=="Se connecter")
+                    left+=scrollbarwidth;
+                /*else
+                    leftClickPosition = $(choice).offset().left;*/
+
+                newwidth = $(choice).width() + 32 ;
+                position_difference=$('#choixselection').offset().left-left;
+                if(position_difference>0)
+                {
+                    //alert("position a droite");
+                    $('#choixselection').animate({'left':left+50,
+                        'height': 10,
+                        'top':90,
+                    'background-color':'#FF810F'},150,function(){
+
+                        $('#choixselection').animate({'left':left,
+                            'width': newwidth,
+                            height: 40,
+                            top:75,
+                            'background-color':'#ac1416'
+                        },150);
+                    });
+
+                }
+
+                else {
+                    $(choice).offset().right
+
+                    $('#choixselection').animate({
+                        'left': left-50,
+                        'height': 10,
+                        'top': 90,
+                        'background-color':'#FF810F'
+                    }, 150, function () {
+
+                        $('#choixselection').animate({
+                            'left': left,
+                            'width': newwidth,
+                            height: 40,
+                            top: 75,
+                            'background-color':'#ac1416'
+                        }, 150);
+                    });
+
+                }
+
+
+
+
+            });
+
+
+
+
+        });
+
+    }]);
 
 
 
@@ -122,17 +192,21 @@ function connexionEtDeconnexionOnLoad($scope){
     $scope.link = document.createElement('a');
     $scope.link.textContent = 'Gérer les époque';
     $scope.link.href = 'timelineadmin';
+    //$scope.link.setAttribute("class", "nav" );
+
 
     //link2=timenoteadmin
     $scope.link2 = document.createElement('a');
     $scope.link2.textContent = 'Gérer les évenement';
     $scope.link2.href = 'timenoteadmin';
+    //$scope.link2.className = "nav";
 
     // bouton de déconnexion
-    $scope.disconnectbutton = document.createElement("button");        // Create a <button> element
+    $("#connectButton").html("Se déconnecter");
+   /* $scope.disconnectbutton = document.createElement("button");        // Create a <button> element
     $scope.disconnectbutton.textContent="Se déconnecter";
     $scope.disconnectbutton.className= "buttonSoft";
-    $scope.disconnectbutton.id="deconnectionButton";// Create  text
+    $scope.disconnectbutton.id="deconnectionButton";// Create  text*/
 
 
     //$scope.disconnectbutton.setAttribute("id", "deconnectionButton");
@@ -150,7 +224,7 @@ function connexionEtDeconnexionOnLoad($scope){
         document.getElementById('loginsection').appendChild($scope.disconnectbutton);
 
         // event deconnexion on change la valeur token
-        document.getElementById("deconnectionButton").addEventListener("click", function(){
+        document.getElementById("connectButton").addEventListener("click", function(){
             console.log("deconnecte");
             connectionmembre = localStorage.setItem("leclientAdminZestConnecteeesimilikrypt_token_asodhu643uy43bfjh","ggg");
             document.location.href = "/home"
@@ -186,17 +260,20 @@ function connexionEtDeconnexionOnLoad2($scope,$http){
             $scope.link = document.createElement('a');
             $scope.link.textContent = 'Gérer les époque';
             $scope.link.href = 'timelineadmin';
+            $scope.link.className = "nav";
 
             //link2=timenoteadmin
             $scope.link2 = document.createElement('a');
             $scope.link2.textContent = 'Gérer les évenement';
             $scope.link2.href = 'timenoteadmin';
+            $scope.link2.className = "nav";
 
+            $("#connectButton").html("Se déconnecter");
             // bouton de déconnexion
-            $scope.disconnectbutton = document.createElement("button");        // Create a <button> element
+           /* $scope.disconnectbutton = document.createElement("button");        // Create a <button> element
             $scope.disconnectbutton.textContent="Se déconnecter";
             $scope.disconnectbutton.className= "buttonSoft";
-            $scope.disconnectbutton.id="deconnectionButton";// Create  text
+            $scope.disconnectbutton.id="deconnectionButton";// Create  text*/
 
 
             //$scope.disconnectbutton.setAttribute("id", "deconnectionButton");
@@ -210,11 +287,11 @@ function connexionEtDeconnexionOnLoad2($scope,$http){
             document.getElementById('litimenoteadmin').innerHTML="";
             document.getElementById('litimenoteadmin').appendChild($scope.link2);
 
-            document.getElementById('loginsection').innerHTML="";
-            document.getElementById('loginsection').appendChild($scope.disconnectbutton);
+           /* document.getElementById('loginsection').innerHTML="";
+            document.getElementById('loginsection').appendChild($scope.disconnectbutton);*/
 
             // event deconnexion on change la valeur token
-            document.getElementById("deconnectionButton").addEventListener("click", function(){
+            document.getElementById("connectButton").addEventListener("click", function(){
 
                 var vide={"rien":"levide"};
                 //envoie un mot de pass vide pour deconnexion

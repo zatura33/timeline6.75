@@ -123,6 +123,13 @@
     background: linear-gradient(to right,  rgba(39,23,140,0) 0%,rgba(39,23,140,0.55) 6%,rgba(39,23,140,0.86) 48%,rgba(39,21,136,0.87) 50%,rgba(36,11,112,0.79) 61%,rgba(36,11,112,0.55) 92%,rgba(36,11,112,0.01) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0027178c', endColorstr='#03240b70',GradientType=1 ); /* IE6-9 */
 
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#050001+1,960319+20,9e4558+50,8e0228+81,8e0228+81,000000+100 */
+    background: #050001; /* Old browsers */
+    background: -moz-linear-gradient(left,  #050001 1%, #960319 20%, #9e4558 50%, #8e0228 81%, #8e0228 81%, #000000 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left,  #050001 1%,#960319 20%,#9e4558 50%,#8e0228 81%,#8e0228 81%,#000000 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right,  #050001 1%,#960319 20%,#9e4558 50%,#8e0228 81%,#8e0228 81%,#000000 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#050001', endColorstr='#000000',GradientType=1 ); /* IE6-9 */
+
 
     border: 0px ;
     font-family:  purisa, 'comic sans', cursive;

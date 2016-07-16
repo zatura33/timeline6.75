@@ -29,8 +29,8 @@ var methodOverride = require('method-override'); // simulate DELETE and PUT (exp
 
 
 var options = {
-    key  : fs.readFileSync('./opt/certs/example.com.key'),
-    cert : fs.readFileSync('./opt/certs/example.com.crt')
+    key  : fs.readFileSync('./opt/certs/apache.key'),
+    cert : fs.readFileSync('./opt/certs/apache.crt')
 };
 
 

@@ -5,7 +5,10 @@
 <head>
 
     <!-- CSS (load bootstrap) -->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <!-- utilisation typescript a mon compte aviser client(e)-->
+    <script src="https://use.typekit.net/neo4oyg.js"></script>
+    <script>try{Typekit.load({ async: true });}catch(e){}</script>
+    <!--<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">-->
     <!-- CSS (load vis for the timeline) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.min.css">
     <link rel="stylesheet" href="css/main.css">
@@ -54,27 +57,30 @@
 
 
 <!-- NAVIGATION -->
-<nav class="navbar navbar-inverse whiteBorderShadow" role="navigation">
-    <div class="navbar-header">
-        <a class="navbar-brand" ui-sref="accueil">Epoque </a>
-    </div>
+<nav  class="topmenu_main bottomwhiteBorderShadow" role="navigation">
 
-    <div id="sectionAdmin">
-        <ul class="nav navbar-nav ">
-            <li id="litimelineadmin"></li>
+    <!--  <div class="navbar-header">
+         <a class="navbar-brand" ui-sref="accueil">Epoque </a>
+     </div>-->
+    <div id="choixselection"></div>
+    <div id="">
+        <ul class=" ">
+            <li ><a ng-click="removeClass()" class="nav active"  ui-sref="home">Epoque </a></li>
+            <li  id="litimelineadmin"></li>
             <li  id="litimenoteadmin"></li>
-            <li> <a ui-sref="vuesimple">Vue simple</a>           </li>
-            <li> <a ui-sref="vueavancee">Vue avancée</a>           </li>
+            <li > <a class="nav" ui-sref="vuesimple">Vue simple</a>           </li>
+            <li > <a  class="nav" ui-sref="vueavancee">Vue avancée</a>           </li>
+            <li class="login"> <a id="connectButton" class="nav" ui-sref="userlogin">Se connecter</a>           </li>
         </ul>
     </div>
 
-        <div id="loginsection" class="login"><a class="buttonSoft" ui-sref="userlogin ">Se connecter</a></div>
+    <!--  <div id="loginsection" class="login"><a class="buttonSoft" ui-sref="userlogin">Se connecter</a></div>-->
 
 
 </nav>
 
 <!-- MAIN CONTENT -->
-<div class="container">
+<div class="main_Container">
 
     <!-- THIS IS WHERE WE WILL INJECT OUR CONTENT ============================== -->
     <div ui-view  ></div>

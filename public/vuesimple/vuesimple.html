@@ -4,21 +4,22 @@
     <title>Vue simple</title>
 </head>
 <body>
-<div class="container2">
+<div>
 
-    <!-- HEADER AND TIMEnote COUNT -->
+    <!-- HEADER AND TIMEnote COUNT
     <div class=" text-center">
         <h1> Vue simple des époques <span class="smallfont"> Nb:{{ timenotes.length }} </span></h1>
-    </div>
+    </div>-->
 
 
 
 
     <div class="bigfont text-center">
         <!-- drop down timeline list-->
-        <label for="repeatSelect"> Choisir votre époque: </label>
+
         <select id="dropdownchoicenote"  name="dropdownnote"  class="bgblacktxWhite" name="repeatSelect" id="repeatSelect" ng-model="formData.timelinename">
             <option ng-repeat="timeline in timelines" value="{{timeline.title}}">{{timeline.title}}</option>
+            <option value="" select disabled>Choisir votre époque</option>
         </select>
     </div>
 
@@ -29,9 +30,9 @@
     </div>
 
 
- <div  class="">
+ <div  class="evenementdisponible">
      <!-- TIMEnote LIST -->
-        <div id="timenote-list" class="alignleftdiv">
+        <div id="timenote-list" class="">
 
             <h3>Évenements disponibles</h3>
             <div id="style-4scrollbar"  class="vuesimple_evenmentliste">
