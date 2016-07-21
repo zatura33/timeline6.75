@@ -100,6 +100,11 @@ angular.module('routerApp').controller('userlogin_Ctrl', ['$scope','$http',
                 if(data1=='est connecté                        .'){
                   //  $('#pasconnecte').hide();
                 //$('#vousetesconnecte').show();
+                   /* $scope.userInfo={'user':'admin',
+                                     'state':'connected'   };
+                    $sessionStorage.user =$scope.userInfo;*/
+
+                    sessionStorage.setItem("state", "connected");
                 }
                 else
                 {

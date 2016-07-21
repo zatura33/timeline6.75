@@ -1,28 +1,30 @@
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
 
     <title> Timeline App</title>
 
     <!-- SCROLLS
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
-    <link rel="stylesheet" href="../../css/main.css">
-    <script src="../app.js"></script>
-</head>
-<body>
-<div ng-controller="userlogin_Ctrl" class="container2 middlewidth">
+    <!-- <link rel="stylesheet" href="../../css/main.css">
+     <script src="../app.js"></script>-->
+ </head>
+ <body>
+ <div ng-controller="userlogin_Ctrl" class="centeredContainer">
 
-    <div id="pasconnecte" >
-        <h2>Connexion</h2>
-        <form name="form"  >
-            <div class="form-group" >
-                <label for="username">Nom d'utilisateur</label>
-                <input type="text" name="username" id="username" class="form-control"  ng-model="username" />
-                <!--<span ng-show="form.username.$dirty && form.username.$error.required" class="help-block">Username is required</span>-->
+     <div id="loginpasconnecte"  >
+         <div class="titreLogin" >
+         <h2>Connexion</h2>
+         </div>
+         <form name="formulaire"  >
+             <div class="form-group" >
+                 <!-- <label for="username">Nom d'utilisateur</label>-->
+                 <input type="text" name="username" placeholder="Nom d'utilisateur" id="username" class="champlogin"  ng-model="username" />
+                 <!--<span ng-show="form.username.$dirty && form.username.$error.required" class="help-block">Username is required</span>-->
             </div>
             <div class="form-group" >
-                <label for="password">Mot de passe</label>
-                <input type="password" name="password" id="password" class="form-control" ng-model="password" />
+                <!--<label for="password">Mot de passe</label>-->
+                <input type="password" name="password" placeholder="Mot de passe" id="password" class="champlogin" ng-model="password" />
                 <!--<span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Password is required</span>-->
             </div>
             <div class="form-actions">

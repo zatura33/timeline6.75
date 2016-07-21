@@ -4,14 +4,13 @@
 <html>
 <head>
 
-    <!-- CSS (load bootstrap) -->
     <!-- utilisation typescript a mon compte aviser client(e)-->
     <script src="https://use.typekit.net/neo4oyg.js"></script>
     <script>try{Typekit.load({ async: true });}catch(e){}</script>
-    <!--<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">-->
-    <!-- CSS (load vis for the timeline) -->
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.min.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="../css/vueavancee.css">
 
     <style>
 
@@ -22,19 +21,22 @@
     <script src="jsFiles/moment-with-locales.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.min.js"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.10/ngStorage.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js"></script>
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.js"></script>
 
+    <!-- local file -->
 
-    <!-- <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>-->
     <script src="/tinymce/js/tinymce/tinymce.min.js"></script>
     <script src="jsFiles/interact.js"></script>
     <script src="jsFiles/nav_and_widgetjq.js"></script>
 
     <script src="aesencryptlib.js"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>-->
+
 
     <!-- chargement de tous les controleurs -->
     <script src="app.js"></script>
@@ -45,7 +47,7 @@
     <script src="login/login_Ctrl.js"></script>
     <script src="partialhome/partial_homeCtrl.js"></script>
     <script src="vueAvancee/vueavanceeCtrl.js"></script>
-
+    <!--- en cas changement de ligne de temps -->
 
 
 
@@ -54,45 +56,38 @@
 <!-- apply our angular app to our site -->
 <body ng-app="routerApp">
 
-
-
+<div class="header">
+</div>
 <!-- NAVIGATION -->
 <nav  class="topmenu_main bottomwhiteBorderShadow" role="navigation">
 
-    <!--  <div class="navbar-header">
-         <a class="navbar-brand" ui-sref="accueil">Epoque </a>
-     </div>-->
-    <div id="choixselection"></div>
-    <div id="">
-        <ul class=" ">
-            <li ><a ng-click="removeClass()" class="nav active"  ui-sref="home">Epoque </a></li>
-            <li  id="litimelineadmin"></li>
-            <li  id="litimenoteadmin"></li>
-            <li > <a class="nav" ui-sref="vuesimple">Vue simple</a>           </li>
-            <li > <a  class="nav" ui-sref="vueavancee">Vue avancée</a>           </li>
-            <li class="login"> <a id="connectButton" class="nav" ui-sref="userlogin">Se connecter</a>           </li>
-        </ul>
-    </div>
+    <div id="boitemenu">
 
-    <!--  <div id="loginsection" class="login"><a class="buttonSoft" ui-sref="userlogin">Se connecter</a></div>-->
+        <div id="choixselection"></div>
+
+            <ul class=" ">
+                <li ><a id="homelink" ng-click="removeClass()" class="nav"  ui-sref="home">Epoque </a></li>
+                <div class="menuConnecte">
+                        <li  id="litimelineadmin"><a id="timelineadminlink" class="nav" ui-sref="timelineadmin">Gérer les époques</a></li>
+                        <li  id="litimenoteadmin"><a id="timenoteadminlink" class="nav" ui-sref="notecardadmin">Gérer les évènements</a></li>
+                </div>
+                <li > <a id="vuesimplelink" class="nav" ui-sref="vuesimple">Vue simple</a>           </li>
+                <li > <a id="vueavanceelink2"  class="nav" ui-sref="vueavancee">Vue avancée</a>           </li>
+                <li class="login"> <a id="connectButton" class="nav" ui-sref="userlogin">Se connecter</a> </li>
+
+            </ul>
+
+    </div>
 
 
 </nav>
+
 
 <!-- MAIN CONTENT -->
 <div class="main_Container">
 
     <!-- THIS IS WHERE WE WILL INJECT OUR CONTENT ============================== -->
     <div ui-view  ></div>
-
-
-    <!--
-    <div ui-view="viewA"></div>
-    <div ui-view="viewB">
-
-    </div>-->
-
-
 
 
 </div>

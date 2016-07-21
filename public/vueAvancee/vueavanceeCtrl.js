@@ -18,15 +18,43 @@ angular.module('routerApp').controller('vueavancee_Ctrl', ['$scope', '$http','$s
 
        // $scope.formData.timelinename="";
 
+
+
+
+        var currentDate=new Date();
+        items=new vis.DataSet([{
+
+            className:"evenement",
+            id:"epoqueId1",
+            start: new Date(currentDate),
+
+            content:"aujourd'hui"}]);
+
+
+        //on focus sur l'époque que l'on vient d'afficher
+        //visualTimeline.focus("epoqueId1");
+
+
         $scope.currentEpoque = {title:'',
             date:'',
             theme:'',
             description:''};
 
 
+
+
+
         $(document).ready(function() {
 
 
+
+
+
+
+
+            //$("#lignedetemps").fadeIn("slow");
+           // $("#lignedetemps").animate({opacity: "1.0"},5000);
+            /*$("#lignedetemps").fadeIn("slow");*/
                 // action quand on selectionne une époque
             $( "#dropdownchoicenote" ).change(function() {
                 console.log("Handler for .change() called.");
@@ -57,8 +85,21 @@ angular.module('routerApp').controller('vueavancee_Ctrl', ['$scope', '$http','$s
                     //on focus sur l'époque que l'on vient d'afficher
                     visualTimeline.focus("epoqueId");
                 }
-                else
+                else{
                     currentEpoque.title="Sélection d'époque vide";
+                    var currentDate=new Date();
+                    items.update({
+                        type:'background',
+                        className:"epoqueChoisie",
+                        id:"Aujourd'hui",
+                        start: new Date(currentDate),
+
+                        content:'bienvunue sur la ligne de temps'});
+
+                    //on focus sur l'époque que l'on vient d'afficher
+                    visualTimeline.focus("Aujourd'hui");
+                }
+
 
 
 
@@ -198,7 +239,7 @@ angular.module('routerApp').controller('vueavancee_Ctrl', ['$scope', '$http','$s
         var container = document.getElementById('visualization');
 
         // Create a DataSet (allows two way data-binding)
-         items = new vis.DataSet([
+        // items = new vis.DataSet([
            /* {exempe d'un item
             start: new Date(2010, 7, 15),
             end: new Date(2015, 8, 2),
@@ -212,7 +253,7 @@ angular.module('routerApp').controller('vueavancee_Ctrl', ['$scope', '$http','$s
             {id: 1, content: 'item 1', start: '2013-04-20'},
             {id: 4, content: 'item 4', start: '2013-04-16', end: '2013-04-19'},
             */
-        ]);
+        //]);
 
         // Configuration for the Timeline
         var options = {
@@ -231,8 +272,25 @@ angular.module('routerApp').controller('vueavancee_Ctrl', ['$scope', '$http','$s
         });
 
 
+       /*------------ SI POSSIBLE S'EN PASSER SOLUTION SECONDAIRE
 
+        google.charts.load('current', {'packages':['timeline']});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+            var container = document.getElementById('timeline2');
+            var chart = new google.visualization.Timeline(container);
+            var dataTable = new google.visualization.DataTable();
 
+            dataTable.addColumn({ type: 'string', id: 'President' });
+            dataTable.addColumn({ type: 'date', id: 'Start' });
+            dataTable.addColumn({ type: 'date', id: 'End' });
+            dataTable.addRows([
+                [ 'Washington', new Date(1789, 3, 30), new Date(1797, 2, 4) ],
+                [ 'Adams',      new Date(1797, 2, 4),  new Date(1801, 2, 4) ],
+                [ 'Jefferson',  new Date(1801, 2, 4),  new Date(1809, 2, 4) ]]);
+
+            chart.draw(dataTable);
+        }*/
 
 
     }
